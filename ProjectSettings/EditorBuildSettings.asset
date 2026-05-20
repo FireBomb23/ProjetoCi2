@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mundo 3/Nivel 1/GameScene.unity
     guid: 4f1a6fd318a75604cb630d85fd84f055
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/Nivel 1/ScoreScene.unity
+    guid: 651caaa27b2e70b44a7d0c4e02fd4033
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,32 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia;
-
     public int aguaAtual = 0;
     public int aguaMaxima = 8;
     public bool jogoAtivo = true;
 
     public Slider barraAgua;
-    public TMP_Text textoMensagem;
-    public GameObject painelVitoria;
-    public GameObject painelDerrota;
+    public Text textoMensagem;
+    // REMOVIDO: painelVitoria e painelDerrota
 
-    void Awake()
-    {
-        instancia = this;
-    }
+    void Awake() { instancia = this; }
 
     void Start()
     {
         barraAgua.maxValue = aguaMaxima;
         barraAgua.value = 0;
-        painelVitoria.SetActive(false);
-        painelDerrota.SetActive(false);
     }
 
     public void ApanarGota(Gota.TipoGota tipo)
@@ -44,15 +36,16 @@ public class GameManager : MonoBehaviour
             aguaAtual = Mathf.Max(aguaAtual - 1, 0);
             string nome = tipo == Gota.TipoGota.Sumo ? "Sumo" : "Refrigerante";
             MostrarMensagem("Cuidado! " + nome + " faz mal!");
+            // SEM derrota — apenas perde progresso
         }
-
         barraAgua.value = aguaAtual;
     }
 
     void Ganhar()
     {
         jogoAtivo = false;
-        painelVitoria.SetActive(true);
+        // Carrega a cena de vitória separada
+        SceneManager.LoadScene("ScoreScene");
     }
 
     void MostrarMensagem(string msg)
@@ -61,11 +54,5 @@ public class GameManager : MonoBehaviour
         CancelInvoke("LimparMensagem");
         Invoke("LimparMensagem", 1.5f);
     }
-
     void LimparMensagem() { textoMensagem.text = ""; }
-
-    public void ReiniciarJogo()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
 }
