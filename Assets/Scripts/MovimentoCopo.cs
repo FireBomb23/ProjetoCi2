@@ -2,29 +2,47 @@ using UnityEngine;
 
 public class MovimentoCopo : MonoBehaviour
 {
-    public float velocidade = 10f;
-    public float limitoEsquerdo = -3.5f;
-    public float limitoDireito = 3.5f;
+    // Limites em coordenadas de Canvas (Canvas 1920 -> X de -960 a +960)
+    public float limiteEsquerdo = -800f;
+    public float limiteDireito = 800f;
+
+    RectTransform rt;
+    Canvas canvas;
+
+    void Awake()
+    {
+        rt = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
+    }
 
     void Update()
     {
-        float posX = 0;
+        Vector2 posCanvas;
 
-        // Controlo por rato
+        // Converter posicao do rato para coordenadas do Canvas
         if (Input.GetMouseButton(0))
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            posX = pos.x;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.GetComponent<RectTransform>(),
+                Input.mousePosition,
+                canvas.worldCamera,
+                out posCanvas
+            );
+            float x = Mathf.Clamp(posCanvas.x, limiteEsquerdo, limiteDireito);
+            rt.anchoredPosition = new Vector2(x, rt.anchoredPosition.y);
         }
 
-        // Controlo por toque (telemóvel)
+        // Suporte a toque (mobile)
         if (Input.touchCount > 0)
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            posX = pos.x;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.GetComponent<RectTransform>(),
+                Input.GetTouch(0).position,
+                canvas.worldCamera,
+                out posCanvas
+            );
+            float x = Mathf.Clamp(posCanvas.x, limiteEsquerdo, limiteDireito);
+            rt.anchoredPosition = new Vector2(x, rt.anchoredPosition.y);
         }
-
-        float x = Mathf.Clamp(posX, limitoEsquerdo, limitoDireito);
-        transform.position = new Vector3(x, transform.position.y, 0);
     }
 }

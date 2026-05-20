@@ -7,8 +7,21 @@ public class SpawnGotas : MonoBehaviour
     public GameObject prefabRefrigerante;
 
     public float intervalo = 1.2f;
-    public float posYSpawn = 6f;
-    float timer = 0;
+    // Canvas 1920x1080: X vai de -960 a +960, Y de -540 a +540
+    public float posYSpawn = 620f;   // acima do topo do Canvas
+    public float xMin = -900f;  // margem lateral esquerda
+    public float xMax = 900f;  // margem lateral direita
+
+    // Referencia ao RectTransform do Canvas pai
+    RectTransform canvasRect;
+    float timer = 0f;
+
+    void Start()
+    {
+        // Encontrar o Canvas pai automaticamente
+        Canvas canvas = FindObjectOfType<Canvas>();
+        canvasRect = canvas.GetComponent<RectTransform>();
+    }
 
     void Update()
     {
@@ -17,26 +30,31 @@ public class SpawnGotas : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= intervalo)
         {
-            timer = 0;
+            timer = 0f;
             SpawnarGota();
         }
     }
 
     void SpawnarGota()
     {
-        float x = Random.Range(-3f, 3f);
-        Vector3 pos = new Vector3(x, posYSpawn, 0);
+        // Posicao aleatoria em X dentro do Canvas
+        float x = Random.Range(xMin, xMax);
 
-        // 50% água, 25% sumo, 25% refrigerante
+        // Escolher tipo de gota: 50% agua, 25% sumo, 25% refrigerante
         float r = Random.value;
         GameObject prefab;
-        if (r < 0.5f) prefab = prefabAgua;
+        if (r < 0.50f) prefab = prefabAgua;
         else if (r < 0.75f) prefab = prefabSumo;
         else prefab = prefabRefrigerante;
 
-        GameObject g = Instantiate(prefab, pos, Quaternion.identity);
+        // Instanciar como filho do Canvas
+        GameObject g = Instantiate(prefab, canvasRect);
 
-        // Velocidade aleatória
-        g.GetComponent<Gota>().velocidade = Random.Range(2.5f, 4.5f);
+        // Posicionar em coordenadas de Canvas (anchoredPosition)
+        RectTransform grt = g.GetComponent<RectTransform>();
+        grt.anchoredPosition = new Vector2(x, posYSpawn);
+
+        // Velocidade aleatoria (pixeis/segundo)
+        g.GetComponent<Gota>().velocidade = Random.Range(300f, 550f);
     }
 }
