@@ -167,7 +167,7 @@ MonoBehaviour:
   - {fileID: -1595998989223354662, guid: 86b0b5d7ac3921347927e9e951d0a2ad, type: 3}
   - {fileID: 6048862160296339182, guid: 74459d41f5c680d4b8d0bfe5b0411dec, type: 3}
   - {fileID: 5584685280407450623, guid: 42cc0a6e9dc675845bbd35ab88b33b91, type: 3}
-  fastFoodChance: 0.2
+  fastFoodChance: 0.5
   timerText: {fileID: 883736070}
 --- !u!4 &12696143
 Transform:

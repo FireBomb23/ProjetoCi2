@@ -88,18 +88,19 @@ public class GameRunner : MonoBehaviour
     {
         if (GameManager.instancia == null) return;
 
-        // Fim do tempo -> Guarda pontos e vai para a ScoreScene
+        // Fim do tempo -> Guarda pontos, guarda a cena atual e vai para a ScoreScene
         if (currentTimer > matchTimer)
         {
-            GameManager.instancia.GuardarPontuacaoAntesDeSair();
-            SceneManager.LoadScene("ScoreScene2");
+            // SceneManager.GetActiveScene().name extrai automaticamente o nome exato da cena aberta
+            GameManager.instancia.GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("ScoreScene2.1");
         }
 
-        // Pontuação negativa -> Guarda pontos e vai para a ScoreScene
+        // Pontuação negativa -> Guarda pontos, guarda a cena atual e vai para a ScoreScene
         if (GameManager.instancia.GetScore() < 0)
         {
-            GameManager.instancia.GuardarPontuacaoAntesDeSair();
-            SceneManager.LoadScene("ScoreScene2");
+            GameManager.instancia.GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("ScoreScene2.1");
         }
 
         currentTimer += Time.deltaTime;
