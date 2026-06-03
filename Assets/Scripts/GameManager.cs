@@ -79,8 +79,10 @@ public class GameManager : MonoBehaviour
     
     private int whackScore = 0; 
     
-    // Variável estática global que NUNCA é apagada ao mudar de cena
     public static int pontuacaoFinalGuardada = 0; 
+    
+    // CORREÇÃO: Variável que vai guardar o nome do nível que o jogador estava a jogar
+    public static string ultimaCenaJogada = "GameScene2.1"; 
 
     public void IncrementRightAnswer()
     {
@@ -103,10 +105,10 @@ public class GameManager : MonoBehaviour
         pontuacaoFinalGuardada = 0;
     }
 
-    // Função interna que tira uma "fotografia" aos teus pontos antes do objeto ser limpo
-    public void GuardarPontuacaoAntesDeSair()
+
+    public void GuardarPontuacaoAntesDeSair(string nomeDaCenaAtual)
     {
         pontuacaoFinalGuardada = whackScore;
+        ultimaCenaJogada = nomeDaCenaAtual;
     }
-    
 }

@@ -89,8 +89,8 @@ public class GameRunner : MonoBehaviour
     {
         if (jogoTerminado) return;
         jogoTerminado = true;
-        GameManager.instancia.GuardarPontuacaoAntesDeSair();
-        SceneManager.LoadScene("ScoreScene2");
+        GameManager.instancia.GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("ScoreScene2.1");
     }
 
     void Update()

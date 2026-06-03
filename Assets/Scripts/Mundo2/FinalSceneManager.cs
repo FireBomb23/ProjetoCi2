@@ -29,6 +29,7 @@ public class FinalSceneManager : MonoBehaviour
             GameManager.pontuacaoFinalGuardada = 0;
         }
         
-        SceneManager.LoadScene("GameScene2"); // Recarrega o teu jogo
+        // CORREÇÃO: Abre dinamicamente a cena guardada na memória!
+        SceneManager.LoadScene(GameManager.ultimaCenaJogada); 
     }
 }
