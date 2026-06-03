@@ -9,7 +9,7 @@ public static class GameManager
     {
         _rightAnswers++;
 
-        if (_rightAnswers == 9)
+        if (_rightAnswers == 4)
         {
             SceneManager.LoadScene("FinalScene");
         }
