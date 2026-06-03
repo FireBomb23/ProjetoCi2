@@ -33,6 +33,7 @@ public class GameRunner : MonoBehaviour
 
     private System.Random randomNumberGenerator;
     private float currentTimer;
+    private bool jogoTerminado = false;
 
     void Start()
     {
@@ -84,22 +85,23 @@ public class GameRunner : MonoBehaviour
         }
     }
 
+    void TerminarJogo()
+    {
+        if (jogoTerminado) return;
+        jogoTerminado = true;
+        GameManager.instancia.GuardarPontuacaoAntesDeSair();
+        SceneManager.LoadScene("ScoreScene2");
+    }
+
     void Update()
     {
         if (GameManager.instancia == null) return;
 
-        // Fim do tempo -> Guarda pontos e vai para a ScoreScene
-        if (currentTimer > matchTimer)
+        // Fim do tempo ou pontuação negativa -> Guarda pontos e vai para a ScoreScene
+        if (currentTimer > matchTimer || GameManager.instancia.GetScore() < 0)
         {
-            GameManager.instancia.GuardarPontuacaoAntesDeSair();
-            SceneManager.LoadScene("ScoreScene2");
-        }
-
-        // Pontuação negativa -> Guarda pontos e vai para a ScoreScene
-        if (GameManager.instancia.GetScore() < 0)
-        {
-            GameManager.instancia.GuardarPontuacaoAntesDeSair();
-            SceneManager.LoadScene("ScoreScene2");
+            TerminarJogo();
+            return;
         }
 
         currentTimer += Time.deltaTime;
