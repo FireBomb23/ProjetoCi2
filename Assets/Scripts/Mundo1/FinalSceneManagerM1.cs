@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FinalSceneManager : MonoBehaviour
+public class FinalSceneManagerM1 : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text rightAnswersText;

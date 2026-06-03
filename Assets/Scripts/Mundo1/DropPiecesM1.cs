@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DropPieces : MonoBehaviour, IDropHandler
+public class DropPiecesM1 : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
