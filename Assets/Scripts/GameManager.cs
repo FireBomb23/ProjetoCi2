@@ -16,7 +16,12 @@ public class GameManager : MonoBehaviour
     public Slider barraAgua;
     public Text textoMensagem;
 
-    void Awake() { instancia = this; }
+    void Awake()
+    {
+        if (instancia != null && instancia != this) { Destroy(gameObject); return; }
+        instancia = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {

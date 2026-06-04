@@ -33,6 +33,7 @@ public class GameRunner : MonoBehaviour
 
     private System.Random randomNumberGenerator;
     private float currentTimer;
+    private bool jogoTerminado = false;
 
     void Start()
     {
@@ -84,23 +85,23 @@ public class GameRunner : MonoBehaviour
         }
     }
 
+    void TerminarJogo()
+    {
+        if (jogoTerminado) return;
+        jogoTerminado = true;
+        GameManager.instancia.GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("ScoreScene2.1");
+    }
+
     void Update()
     {
         if (GameManager.instancia == null) return;
 
-        // Fim do tempo -> Guarda pontos, guarda a cena atual e vai para a ScoreScene
-        if (currentTimer > matchTimer)
+        // Fim do tempo ou pontuação negativa -> Guarda pontos e vai para a ScoreScene
+        if (currentTimer > matchTimer || GameManager.instancia.GetScore() < 0)
         {
-            // SceneManager.GetActiveScene().name extrai automaticamente o nome exato da cena aberta
-            GameManager.instancia.GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("ScoreScene2.1");
-        }
-
-        // Pontuação negativa -> Guarda pontos, guarda a cena atual e vai para a ScoreScene
-        if (GameManager.instancia.GetScore() < 0)
-        {
-            GameManager.instancia.GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("ScoreScene2.1");
+            TerminarJogo();
+            return;
         }
 
         currentTimer += Time.deltaTime;
