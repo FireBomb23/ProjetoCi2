@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+// CORREÇÃO: Removido o 'static' daqui. A classe é normal, apenas as variáveis de pontuação são estáticas!
 public class GameManager : MonoBehaviour
 {
     // =========================================================================
@@ -16,16 +17,20 @@ public class GameManager : MonoBehaviour
     public Slider barraAgua;
     public Text textoMensagem;
 
-    void Awake()
-    {
-        if (instancia != null && instancia != this) { Destroy(gameObject); return; }
-        instancia = this;
-        DontDestroyOnLoad(gameObject);
+    void Awake() 
+    { 
+        if (instancia != null && instancia != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instancia = this; 
+        DontDestroyOnLoad(gameObject); 
     }
 
     void Start()
     {
-        // PROTEÇÃO: Só atualiza a barra se ela tiver sido arrastada no Inspector
         if (barraAgua != null)
         {
             barraAgua.maxValue = aguaMaxima;
@@ -50,7 +55,6 @@ public class GameManager : MonoBehaviour
             MostrarMensagem("Cuidado! " + nome + " faz mal!");
         }
 
-        // PROTEÇÃO: Só atualiza o valor se a barra existir
         if (barraAgua != null)
         {
             barraAgua.value = aguaAtual;
@@ -60,12 +64,13 @@ public class GameManager : MonoBehaviour
     void Ganhar()
     {
         jogoAtivo = false;
+        GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("ScoreScene");
     }
 
     void MostrarMensagem(string msg)
     {
-        if (textoMensagem == null) return; // Proteção técnica
+        if (textoMensagem == null) return;
         textoMensagem.text = msg;
         CancelInvoke("LimparMensagem");
         Invoke("LimparMensagem", 1.5f);
@@ -74,14 +79,14 @@ public class GameManager : MonoBehaviour
 
 
     // =========================================================================
-    // 🍎 JOGO WHACK-A-MOLE - (FRUTA +1 | FAST FOOD -1 | BURACO -1)
+    // 🍎 JOGO WHACK-A-MOLE (FRUTAS) - SUPORTE DINÂMICO NÍVEIS 2.1, 2.2 E 2.3
     // =========================================================================
     
     private int whackScore = 0; 
     
     public static int pontuacaoFinalGuardada = 0; 
     
-    // CORREÇÃO: Variável que vai guardar o nome do nível que o jogador estava a jogar
+    // Suporta qualquer nível dinamicamente (2.1, 2.2, 2.3, etc.)
     public static string ultimaCenaJogada = "GameScene2.1"; 
 
     public void IncrementRightAnswer()
@@ -102,13 +107,11 @@ public class GameManager : MonoBehaviour
     public void ResetWhackScore()
     {
         whackScore = 0;
-        pontuacaoFinalGuardada = 0;
     }
-
 
     public void GuardarPontuacaoAntesDeSair(string nomeDaCenaAtual)
     {
         pontuacaoFinalGuardada = whackScore;
-        ultimaCenaJogada = nomeDaCenaAtual;
+        ultimaCenaJogada = nomeDaCenaAtual; 
     }
 }

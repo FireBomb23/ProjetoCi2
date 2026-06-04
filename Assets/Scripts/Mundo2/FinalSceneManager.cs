@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 public class FinalSceneManager : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text answersText; // O Teu "Text (TMP)" que está no Inspector
+    private TMP_Text answersText; 
 
     public void Start()
     {
-        // Lê diretamente o valor estático ultra seguro
         if (answersText != null)
         {
             answersText.text = GameManager.pontuacaoFinalGuardada.ToString();
@@ -18,7 +17,6 @@ public class FinalSceneManager : MonoBehaviour
 
     public void TestAgain()
     {
-        // Se encontrar o gestor ativo, faz reset aos scores
         GameManager manager = Object.FindFirstObjectByType<GameManager>();
         if (manager != null)
         {
@@ -29,7 +27,7 @@ public class FinalSceneManager : MonoBehaviour
             GameManager.pontuacaoFinalGuardada = 0;
         }
         
-        // CORREÇÃO: Abre dinamicamente a cena guardada na memória!
+        // Devolve o jogador dinamicamente para a cena de onde veio (2.1, 2.2 ou 2.3)
         SceneManager.LoadScene(GameManager.ultimaCenaJogada); 
     }
 }
