@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mundo 2/LevelSelectScene.unity
     guid: c70fa87ea2f717646baf6cc9dddc2a66
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/AprenderScene.unity
+    guid: 67dca70721bc6e147ae8637596862ade
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/LevelSelectScene.unity
+    guid: dcf4bda57a46f374eb3344462e441627
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
