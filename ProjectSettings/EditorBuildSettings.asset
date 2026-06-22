@@ -15,34 +15,34 @@ EditorBuildSettings:
     path: Assets/Scenes/CreditosScene.unity
     guid: 34a2b3dc3084c6b4980e8d306a7d9089
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/WorldScene.unity
+    path: Assets/Scenes/Mundo 1/WorldScene1.unity
     guid: 4d2f7e28d52199f4f9def0166b076b94
   - enabled: 1
     path: Assets/Scenes/Mundo 1/LevelSelectScene.unity
     guid: 6a7e4b6882605bb4cbaed8d928d0d773
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/AprenderScene.unity
+    path: Assets/Scenes/Mundo 1/AprenderScene1.unity
     guid: 3fc45a5065d8cec4781e9d5d08594d0b
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/Nivel 1/GameScene.unity
+    path: Assets/Scenes/Mundo 1/Nivel 1/GameScene11.unity
     guid: ea684be7a4cc94042b8913f51de17382
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/Nivel 1/ScoreScene.unity
+    path: Assets/Scenes/Mundo 1/Nivel 1/ScoreScene11.unity
     guid: 377c463fb6fd635428c68e53c4ef322e
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/Nivel 2/GameScene.unity
+    path: Assets/Scenes/Mundo 1/Nivel 2/GameScene12.unity
     guid: f2d50fc8590e9c840a5b5918690348b4
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/Nivel 2/ScoreScene.unity
+    path: Assets/Scenes/Mundo 1/Nivel 2/ScoreScene12.unity
     guid: 1e070ceb5cb1bed469cf74e8e9e8fc72
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/Nivel 3/GameScene.unity
+    path: Assets/Scenes/Mundo 1/Nivel 3/GameScene13.unity
     guid: 94cf561aed50e7846ae13f58322ed796
   - enabled: 1
-    path: Assets/Scenes/Mundo 1/Nivel 3/ScoreScene.unity
+    path: Assets/Scenes/Mundo 1/Nivel 3/ScoreScene13.unity
     guid: a131ff96822cc504ab5600bb8be59a39
   - enabled: 1
-    path: Assets/Scenes/Mundo 2/WorldScene.unity
+    path: Assets/Scenes/Mundo 2/WorldScene2.unity
     guid: 74686f08db981c545bcee688ccb680c4
   - enabled: 1
     path: Assets/Scenes/Mundo 2/LevelSelectScene.unity
@@ -63,7 +63,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mundo 2/Nivel 2/ScoreScene2.2.unity
     guid: f7fe21bcded9efd4da99a4848d313515
   - enabled: 1
-    path: Assets/Scenes/Mundo 3/WorldScene.unity
+    path: Assets/Scenes/Mundo 3/WorldScene3.unity
     guid: b37e95d682234374d81e7d9178e3be83
   - enabled: 1
     path: Assets/Scenes/Mundo 3/LevelSelectScene3.unity
