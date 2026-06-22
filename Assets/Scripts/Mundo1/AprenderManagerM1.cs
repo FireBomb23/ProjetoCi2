@@ -3,11 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class AprenderManagerM3 : MonoBehaviour
+public class AprenderManagerM1 : MonoBehaviour
 {
-    [Header("Navegacao")]
-    [SerializeField] private string cenaSeguinte = "LevelSelectScene3";
-
     // ── Painel Esquerdo – Curiosidades ──
     [Header("Painel Esquerdo")]
     [SerializeField] private Text textoFacto;
@@ -36,88 +33,84 @@ public class AprenderManagerM3 : MonoBehaviour
     [SerializeField] private GameObject painelResultado;
     [SerializeField] private Text textoPontuacao;
 
-    // ── Painel Direito – Copos ──
+    // ── Painel Direito – Grupos no Prato ──
     [Header("Painel Direito")]
-    [SerializeField] private Text textoContadorCopos;
-    [SerializeField] private Text textoMsgCopos;
+    [SerializeField] private Text textoContadorGrupos;
+    [SerializeField] private Text textoMsgGrupos;
 
     // ── Data ──
     private readonly string[] factos = {
-        "O nosso corpo e\n<b>60% agua!</b>\nSem agua nao conseguimos\nsobreviver!",
-        "Precisamos de beber\n<b>6 a 8 copos</b> de agua\npor dia para pensar melhor!",
-        "A agua ajuda a <b>regular\na temperatura</b> do corpo\ne transporta nutrientes!",
-        "A <b>agua e sempre\na melhor escolha!</b>\nNatural, saudavel e sem acucar!",
-        "Os <b>sumos</b> tem muito acucar!\nOs <b>refrigerantes</b>\nfazem mal aos dentes!",
-        "Bebe agua ao <b>acordar</b>,\nnas <b>refeicoes</b> e quando\n<b>praticas desporto!</b>"
+        "Os alimentos dividem-se\nem <b>grupos</b>! Cada grupo\ndá-nos nutrientes diferentes\ne todos são importantes!",
+        "Os <b>cereais</b>\n(pão, massa, arroz)\nfornecem a <b>energia</b>\nque o teu corpo precisa!",
+        "Os <b>legumes e frutas</b>\nestão cheios de vitaminas\ne minerais para\ncrescer saudável!",
+        "As <b>proteínas</b>\n(carne, peixe, ovos)\nconstroem e reparam\nos músculos do corpo!",
+        "Os <b>lacticínios</b>\n(leite, queijo, iogurte)\nfortalecem os <b>ossos</b>\ne os dentes!",
+        "Devemos comer de\n<b>todos os grupos</b>\ntodos os dias para ter\numa dieta equilibrada!"
     };
 
     private readonly string[] perguntas = {
-        "O nosso corpo e 60% agua.",
-        "Devemos beber 6 a 8 copos de agua por dia.",
-        "A agua faz mal aos dentes.",
-        "Os sumos sao sempre a melhor escolha para beber.",
-        "A agua ajuda a transportar nutrientes pelo corpo."
+        "Os cereais fornecem energia para o nosso corpo.",
+        "Frutas e legumes dão-nos vitaminas e minerais.",
+        "A carne e o peixe sao fontes de proteina.",
+        "Os lacticinios nao sao importantes para os ossos.",
+        "Devemos comer so de um grupo alimentar por dia."
     };
-    private readonly bool[] respostasCorretas = { true, true, false, false, true };
+    private readonly bool[] respostasCorretas = { true, true, true, false, false };
 
     private readonly string[] cardTitulos = {
-        "Pensar melhor",
-        "Regular a temperatura",
-        "Transportar nutrientes",
-        "Agua vs. Sumos e Refrigerantes"
+        "Cereais",
+        "Legumes & Frutas",
+        "Proteinas",
+        "Lacticinios"
     };
     private readonly string[] cardDetalhes = {
-        "O nosso cerebro e 75% agua! Quando estas bem hidratado consegues concentrar-te melhor e aprender mais rapido na escola. Antes de um teste bebe um copo de agua!",
-        "Quando tens calor ou fazes exercicio o teu corpo sua. O suor arrefece a pele mas perdes agua! Por isso bebe durante e depois do desporto para repor tudo.",
-        "O sangue e 90% agua! Ele leva o oxigenio as vitaminas e os minerais a todas as celulas do corpo. Sem agua suficiente sentes-te cansado e sem energia.",
-        "Uma caixinha de sumo pode ter ate 5 colheres de acucar! Os refrigerantes corroem o esmalte dos dentes. A agua nao tem acucar nem calorias - e sempre a melhor escolha!"
+        "Pao, massa, arroz, batata e aveia sao cereais que nos dao energia. Devem ser a base da nossa alimentacao! Escolhe versoes integrais para teres mais fibra e sentires-te satisfeito por mais tempo.",
+        "Legumes e frutas sao ricos em vitaminas, minerais e fibra. Devemos comer 5 porcoes por dia! Quanto mais coloridos, mais nutrientes diferentes. Come o arco-iris da natureza!",
+        "Carne, peixe, ovos e leguminosas sao ricos em proteinas. As proteinas constroem musculos e reparam celulas. Come peixe pelo menos 2 vezes por semana - e muito saudavel!",
+        "Leite, queijo e iogurte sao ricos em calcio e vitamina D. Estes nutrientes sao essenciais para ter ossos e dentes fortes. Escolhe versoes com menos gordura para uma opcao mais saudavel!"
     };
 
-    private readonly string[] cupMsgs = {
-        "Clica num copo para comecar!",
-        "Boa! 1 copo! Continua!",
-        "2 copos! No bom caminho!",
-        "3 copos! O cerebro agradece!",
-        "4 copos! A meio do objetivo!",
-        "5 copos! Quase la!",
-        "6 copos! Chegaste ao minimo!",
-        "7 copos! Incrivel! Mais um!",
-        "PARABENS! Objetivo atingido!"
+    private readonly string[] gruposMsgs = {
+        "Clica num grupo para comecar!",
+        "1 grupo! Continua!",
+        "2 grupos! Muito bem!",
+        "3 grupos! Quase la!",
+        "PARABENS! Prato completo!"
     };
 
     private int paginaAtual = 0;
     private int perguntaAtual = 0;
     private int pontuacao = 0;
     private bool aguardarResposta = false;
-    private int coposCount = 0;
+    private int gruposCount = 0;
     private string detalheAtivo = "";
 
     void Start()
     {
         MostrarCards();
         AtualizarFacto();
-        AtualizarCopos();
+        AtualizarGrupos();
         if (painelDetalhe != null) painelDetalhe.SetActive(false);
     }
 
     // ── ESQUERDO ──
     private void AtualizarFacto()
     {
-        if (textoFacto    != null) textoFacto.text    = factos[paginaAtual];
-        if (textoIndicador!= null) textoIndicador.text = (paginaAtual + 1) + " / " + factos.Length;
-        if (botaoAnterior != null) botaoAnterior.gameObject.SetActive(paginaAtual > 0);
-        if (botaoProximo  != null) botaoProximo.gameObject.SetActive(paginaAtual < factos.Length - 1);
+        if (textoFacto     != null) textoFacto.text     = factos[paginaAtual];
+        if (textoIndicador != null) textoIndicador.text  = (paginaAtual + 1) + " / " + factos.Length;
+        if (botaoAnterior  != null) botaoAnterior.gameObject.SetActive(paginaAtual > 0);
+        if (botaoProximo   != null) botaoProximo.gameObject.SetActive(paginaAtual < factos.Length - 1);
     }
 
     public void ProximoFacto()  { if (paginaAtual < factos.Length - 1) { paginaAtual++; AtualizarFacto(); } }
-    public void FactoAnterior() { if (paginaAtual > 0)                 { paginaAtual--; AtualizarFacto(); } }
+    public void FactoAnterior() { if (paginaAtual > 0)                  { paginaAtual--; AtualizarFacto(); } }
 
     // ── CARDS ──
     private void MostrarCards()
     {
-        if (painelCards    != null) painelCards.SetActive(true);
-        if (painelQuiz     != null) painelQuiz.SetActive(false);
-        if (painelResultado!= null) painelResultado.SetActive(false);
+        if (painelCards     != null) painelCards.SetActive(true);
+        if (painelQuiz      != null) painelQuiz.SetActive(false);
+        if (painelResultado != null) painelResultado.SetActive(false);
     }
 
     public void MostrarDetalhe0() { MostrarDetalhe(0); }
@@ -143,25 +136,25 @@ public class AprenderManagerM3 : MonoBehaviour
     }
 
     public void JogarQuiz()    { IniciarQuiz(); }
-    public void IrParaNiveis() { SceneManager.LoadScene(cenaSeguinte); }
+    public void IrParaNiveis() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
 
     // ── QUIZ ──
     private void IniciarQuiz()
     {
         perguntaAtual = 0; pontuacao = 0;
         FecharDetalhe();
-        if (painelCards    != null) painelCards.SetActive(false);
-        if (painelQuiz     != null) painelQuiz.SetActive(true);
-        if (painelResultado!= null) painelResultado.SetActive(false);
+        if (painelCards     != null) painelCards.SetActive(false);
+        if (painelQuiz      != null) painelQuiz.SetActive(true);
+        if (painelResultado != null) painelResultado.SetActive(false);
         AtualizarPergunta();
     }
 
     private void AtualizarPergunta()
     {
         aguardarResposta = false;
-        if (textoPergunta    != null) textoPergunta.text     = perguntas[perguntaAtual];
-        if (textoProgressoQuiz!=null) textoProgressoQuiz.text= "Pergunta " + (perguntaAtual+1) + " de " + perguntas.Length;
-        if (textoFeedback    != null) textoFeedback.text     = "Le a frase com atencao!";
+        if (textoPergunta      != null) textoPergunta.text      = perguntas[perguntaAtual];
+        if (textoProgressoQuiz != null) textoProgressoQuiz.text = "Pergunta " + (perguntaAtual+1) + " de " + perguntas.Length;
+        if (textoFeedback      != null) textoFeedback.text      = "Le a frase com atencao!";
         if (botaoV != null) botaoV.interactable = true;
         if (botaoF != null) botaoF.interactable = true;
     }
@@ -197,9 +190,9 @@ public class AprenderManagerM3 : MonoBehaviour
 
     private void MostrarResultado()
     {
-        if (painelCards    != null) painelCards.SetActive(false);
-        if (painelQuiz     != null) painelQuiz.SetActive(false);
-        if (painelResultado!= null) painelResultado.SetActive(true);
+        if (painelCards     != null) painelCards.SetActive(false);
+        if (painelQuiz      != null) painelQuiz.SetActive(false);
+        if (painelResultado != null) painelResultado.SetActive(true);
         string msg = pontuacao == perguntas.Length ? "EXCELENTE! Acertaste TUDO!" :
                      pontuacao >= 3 ? "Muito bem! Continua assim!" :
                      "Continua a estudar, tu consegues!";
@@ -210,24 +203,24 @@ public class AprenderManagerM3 : MonoBehaviour
     public void TentarNovamente() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
     public void Continuar()       { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2); }
 
-    // ── COPOS ──
-    public void AdicionarCopo()
+    // ── GRUPOS NO PRATO ──
+    public void AdicionarGrupo()
     {
-        if (coposCount >= 8) return;
-        coposCount++;
-        AtualizarCopos();
+        if (gruposCount >= 4) return;
+        gruposCount++;
+        AtualizarGrupos();
     }
 
-    public void ResetarCopos()
+    public void ResetarGrupos()
     {
-        coposCount = 0;
-        AtualizarCopos();
+        gruposCount = 0;
+        AtualizarGrupos();
     }
 
-    private void AtualizarCopos()
+    private void AtualizarGrupos()
     {
-        if (textoContadorCopos != null) textoContadorCopos.text = coposCount + " / 8";
-        if (textoMsgCopos != null && coposCount < cupMsgs.Length)
-            textoMsgCopos.text = cupMsgs[coposCount];
+        if (textoContadorGrupos != null) textoContadorGrupos.text = gruposCount + " / 4";
+        if (textoMsgGrupos != null && gruposCount < gruposMsgs.Length)
+            textoMsgGrupos.text = gruposMsgs[gruposCount];
     }
 }

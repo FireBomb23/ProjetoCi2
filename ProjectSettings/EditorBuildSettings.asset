@@ -75,7 +75,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mundo 3/Nivel 1/GameScene31.unity
     guid: e43d7d14e7c9cb5469cae8bb084d8e2b
   - enabled: 1
-    path: Assets/Scenes/Mundo 3/Nivel 1/ScoreScene.unity
+    path: Assets/Scenes/Mundo 3/Nivel 1/ScoreScene1.unity
     guid: 651caaa27b2e70b44a7d0c4e02fd4033
   - enabled: 1
     path: Assets/Scenes/Mundo 3/Nivel 2/GameScene32.unity
