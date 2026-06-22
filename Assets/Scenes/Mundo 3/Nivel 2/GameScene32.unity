@@ -1052,7 +1052,7 @@ MonoBehaviour:
   aguaAtual: 0
   aguaMaxima: 8
   jogoAtivo: 1
-  barraAgua: {fileID: 0}
+  barraAgua: {fileID: 125485530}
   textoMensagem: {fileID: 642403407}
 --- !u!4 &1432620092
 Transform:
