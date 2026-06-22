@@ -14,28 +14,66 @@ public class GameManager : MonoBehaviour
     public int aguaMaxima = 8;
     public bool jogoAtivo = true;
 
-    public Slider barraAgua;
+    public Image barraAgua;   // WaterFill dentro do copo de progresso
     public Text textoMensagem;
 
-    void Awake() 
-    { 
+    void Awake()
+    {
         if (instancia != null && instancia != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        instancia = this; 
-        DontDestroyOnLoad(gameObject); 
+        instancia = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Re-liga barraAgua e textoMensagem sempre que uma nova cena carrega
+    // (necessário porque DontDestroyOnLoad mantém este GameObject mas as
+    // referências da cena anterior ficam inválidas)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        aguaAtual = 0;
+        jogoAtivo = true;
+
+        barraAgua = null;
+        textoMensagem = null;
+
+        foreach (var img in FindObjectsOfType<Image>())
+        {
+            if (img.gameObject.name == "WaterFill")
+            {
+                barraAgua = img;
+                barraAgua.fillAmount = 0f;
+                break;
+            }
+        }
+
+        foreach (var txt in FindObjectsOfType<Text>())
+        {
+            if (txt.gameObject.name == "Texto Mensagem" || txt.gameObject.name == "TextoMensagem")
+            {
+                textoMensagem = txt;
+                break;
+            }
+        }
     }
 
     void Start()
     {
         if (barraAgua != null)
-        {
-            barraAgua.maxValue = aguaMaxima;
-            barraAgua.value = 0;
-        }
+            barraAgua.fillAmount = 0f;
     }
 
     public void ApanarGota(Gota.TipoGota tipo)
@@ -56,9 +94,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (barraAgua != null)
-        {
-            barraAgua.value = aguaAtual;
-        }
+            barraAgua.fillAmount = (float)aguaAtual / aguaMaxima;
     }
 
     void Ganhar()

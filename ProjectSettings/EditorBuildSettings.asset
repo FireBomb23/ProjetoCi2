@@ -6,14 +6,50 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/MainScene.unity
+    guid: 2880749c178a73a42b25970191054d57
   - enabled: 1
-    path: Assets/Scenes/Mundo 3/Nivel 1/GameScene.unity
-    guid: 4f1a6fd318a75604cb630d85fd84f055
+    path: Assets/Scenes/GameSelectScene.unity
+    guid: b616296a3941d22459f08faa57736237
   - enabled: 1
-    path: Assets/Scenes/Mundo 3/Nivel 1/ScoreScene.unity
-    guid: 651caaa27b2e70b44a7d0c4e02fd4033
+    path: Assets/Scenes/CreditosScene.unity
+    guid: 34a2b3dc3084c6b4980e8d306a7d9089
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/WorldScene.unity
+    guid: 4d2f7e28d52199f4f9def0166b076b94
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/LevelSelectScene.unity
+    guid: 6a7e4b6882605bb4cbaed8d928d0d773
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/AprenderScene.unity
+    guid: 3fc45a5065d8cec4781e9d5d08594d0b
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/Nivel 1/GameScene.unity
+    guid: ea684be7a4cc94042b8913f51de17382
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/Nivel 1/ScoreScene.unity
+    guid: 377c463fb6fd635428c68e53c4ef322e
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/Nivel 2/GameScene.unity
+    guid: f2d50fc8590e9c840a5b5918690348b4
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/Nivel 2/ScoreScene.unity
+    guid: 1e070ceb5cb1bed469cf74e8e9e8fc72
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/Nivel 3/GameScene.unity
+    guid: 94cf561aed50e7846ae13f58322ed796
+  - enabled: 1
+    path: Assets/Scenes/Mundo 1/Nivel 3/ScoreScene.unity
+    guid: a131ff96822cc504ab5600bb8be59a39
+  - enabled: 1
+    path: Assets/Scenes/Mundo 2/WorldScene.unity
+    guid: 74686f08db981c545bcee688ccb680c4
+  - enabled: 1
+    path: Assets/Scenes/Mundo 2/LevelSelectScene.unity
+    guid: c70fa87ea2f717646baf6cc9dddc2a66
+  - enabled: 1
+    path: Assets/Scenes/Mundo 2/AprenderScene2.unity
+    guid: 76ed0c21b78edb54abae368132e2e93c
   - enabled: 1
     path: Assets/Scenes/Mundo 2/Nivel 1/GameScene2.1.unity
     guid: e4172a6ebae2d2f4499a5b682eda8eae
@@ -21,14 +57,44 @@ EditorBuildSettings:
     path: Assets/Scenes/Mundo 2/Nivel 1/ScoreScene2.1.unity
     guid: b7a6426fecc94144f89fe64fd1cade25
   - enabled: 1
-    path: Assets/Scenes/Mundo 2/LevelSelectScene.unity
-    guid: c70fa87ea2f717646baf6cc9dddc2a66
+    path: Assets/Scenes/Mundo 2/Nivel 2/GameScene2.2.unity
+    guid: 8200d8b6e12f1bf42984b77c43a57386
   - enabled: 1
-    path: Assets/Scenes/Mundo 3/AprenderScene.unity
+    path: Assets/Scenes/Mundo 2/Nivel 2/ScoreScene2.2.unity
+    guid: f7fe21bcded9efd4da99a4848d313515
+  - enabled: 1
+    path: Assets/Scenes/Mundo 2/Nivel 3/GameScene.unity
+    guid: 64ae4ee651188144e9c93939664d3d22
+  - enabled: 1
+    path: Assets/Scenes/Mundo 2/Nivel 3/ScoreScene.unity
+    guid: 335ea5ee86cd4e147b3e937865b796c6
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/WorldScene.unity
+    guid: b37e95d682234374d81e7d9178e3be83
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/LevelSelectScene3.unity
+    guid: dcf4bda57a46f374eb3344462e441627
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/AprenderScene3.unity
     guid: 67dca70721bc6e147ae8637596862ade
   - enabled: 1
-    path: Assets/Scenes/Mundo 3/LevelSelectScene.unity
-    guid: dcf4bda57a46f374eb3344462e441627
+    path: Assets/Scenes/Mundo 3/Nivel 1/GameScene31.unity
+    guid: e43d7d14e7c9cb5469cae8bb084d8e2b
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/Nivel 1/ScoreScene.unity
+    guid: 651caaa27b2e70b44a7d0c4e02fd4033
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/Nivel 2/GameScene32.unity
+    guid: 1e7a6c0b9e770f84ab83be2505b75f5d
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/Nivel 2/ScoreScene.unity
+    guid: 1926e813050afbe479d5e2590c3c658a
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/Nivel 3/GameScene33.unity
+    guid: a1fd1de0d1f44174e803a6456bd27c48
+  - enabled: 1
+    path: Assets/Scenes/Mundo 3/Nivel 3/ScoreScene.unity
+    guid: ad485015ec522fc4c9904ecd7aae6ee3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
