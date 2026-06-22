@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class PuzzlePieceM1 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Image targetImage;
 

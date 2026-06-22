@@ -15,7 +15,7 @@ public class DropPiecesM1 : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag == null) return;
 
         // Tenta obter o componente PuzzlePiece do objeto que foi largado
-        var collisionElement = eventData.pointerDrag.GetComponent<PuzzlePiece>();
+        var collisionElement = eventData.pointerDrag.GetComponent<PuzzlePieceM1>();
         if (collisionElement == null) return;
 
         // Verifica se o Target Image da peça coincide com o nome desta sombra
