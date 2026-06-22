@@ -18,12 +18,12 @@ public class DropPiecesM1 : MonoBehaviour, IDropHandler
             GetComponent<Image>().color = currentColor;
 
             Destroy(collisionElement.gameObject);
-            GameManager.IncrementRightAnswer();
+            GameManagerM1.IncrementRightAnswer();
         }
         else
         {
             collisionElement.ResetImage();
-            GameManager.IncrementWrongAnswer();
+            GameManagerM1.IncrementWrongAnswer();
         }
     }
 }
