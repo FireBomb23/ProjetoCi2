@@ -63,12 +63,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Mundo 2/Nivel 2/ScoreScene2.2.unity
     guid: f7fe21bcded9efd4da99a4848d313515
   - enabled: 1
-    path: Assets/Scenes/Mundo 2/Nivel 3/GameScene.unity
-    guid: 64ae4ee651188144e9c93939664d3d22
-  - enabled: 1
-    path: Assets/Scenes/Mundo 2/Nivel 3/ScoreScene.unity
-    guid: 335ea5ee86cd4e147b3e937865b796c6
-  - enabled: 1
     path: Assets/Scenes/Mundo 3/WorldScene.unity
     guid: b37e95d682234374d81e7d9178e3be83
   - enabled: 1
@@ -95,6 +89,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mundo 3/Nivel 3/ScoreScene.unity
     guid: ad485015ec522fc4c9904ecd7aae6ee3
+  - enabled: 1
+    path: Assets/Scenes/Mundo 2/Nivel 3/GameScene2.3.unity
+    guid: 64ae4ee651188144e9c93939664d3d22
+  - enabled: 1
+    path: Assets/Scenes/Mundo 2/Nivel 3/ScoreScene2.3.unity
+    guid: 335ea5ee86cd4e147b3e937865b796c6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
