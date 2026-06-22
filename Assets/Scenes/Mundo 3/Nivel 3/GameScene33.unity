@@ -390,7 +390,7 @@ MonoBehaviour:
   prefabAgua: {fileID: 4148468021397797518, guid: fcae1e989da4fab4f9c5276f9f5ec22a, type: 3}
   prefabSumo: {fileID: 2752337603770705885, guid: e9d74bde8af4d354982e63836715f6b4, type: 3}
   prefabRefrigerante: {fileID: 4067515391272924820, guid: dd2370689da9b7945a0d6ca7b44db154, type: 3}
-  intervalo: 1.2
+  intervalo: 0.8
   posYSpawn: -20
   xMin: -900
   xMax: 900
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   aguaAtual: 0
-  aguaMaxima: 8
+  aguaMaxima: 12
   jogoAtivo: 1
   barraAgua: {fileID: 125485530}
   textoMensagem: {fileID: 642403407}
@@ -1152,4 +1152,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1144815302}
   - {fileID: 1432620092}
-  - {fileID: 1116859787
+  - {fileID: 1116859787}
