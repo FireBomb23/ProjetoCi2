@@ -12,13 +12,13 @@ public class FinalSceneManagerM1 : MonoBehaviour
 
     public void Start()
     {
-        rightAnswersText.text = GameManager.GetRightAnswer().ToString();
-        wrongAnswersText.text = GameManager.GetWrongAnswer().ToString();
+        rightAnswersText.text = GameManagerM1.GetRightAnswer().ToString();
+        wrongAnswersText.text = GameManagerM1.GetWrongAnswer().ToString();
     }
 
     public void TestAgain()
     {
-        GameManager.Reset();
+        GameManagerM1.Reset();
         SceneManager.LoadScene("main");
     }
 }

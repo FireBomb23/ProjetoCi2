@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-public static class GameManager
+public static class GameManagerM1
 {
     // Variáveis privadas (o underline no início é uma boa prática para campos privados)
     private static int _rightAnswers = 0;
