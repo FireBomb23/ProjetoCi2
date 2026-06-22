@@ -10,6 +10,11 @@ public static class GameManagerM1
     public static int RightAnswers => _rightAnswers;
     public static int WrongAnswers => _wrongAnswers;
 
+    public static void IncrementWrongAnswer()
+    {
+        _wrongAnswers++;
+    }
+
     public static void IncrementRightAnswer()
     {
         _rightAnswers++;

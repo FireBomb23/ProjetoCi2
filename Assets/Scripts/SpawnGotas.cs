@@ -19,7 +19,7 @@ public class SpawnGotas : MonoBehaviour
     void Start()
     {
         // Encontrar o Canvas pai automaticamente
-        Canvas canvas = FindObjectOfType<Canvas>();
+        Canvas canvas = Object.FindFirstObjectByType<Canvas>();
         canvasRect = canvas.GetComponent<RectTransform>();
     }
 
