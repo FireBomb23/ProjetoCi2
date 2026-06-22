@@ -14,8 +14,7 @@ public class FinalSceneManagerM1 : MonoBehaviour
     {
         rightAnswersText.text = GameManagerM1.RightAnswers.ToString();
         wrongAnswersText.text = GameManagerM1.WrongAnswers.ToString();
-        rightAnswersText.text = GameManagerM1.GetRightAnswer().ToString();
-        wrongAnswersText.text = GameManagerM1.GetWrongAnswer().ToString();
+       
     }
 
     public void TestAgain()
