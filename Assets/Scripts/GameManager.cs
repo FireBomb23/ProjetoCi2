@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public int aguaMaxima = 8;
     public bool jogoAtivo = true;
 
-    public Image barraAgua;   // WaterFill dentro do copo de progresso
+    public Slider barraAgua;
     public Text textoMensagem;
 
     void Awake()
@@ -29,51 +29,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    // Re-liga barraAgua e textoMensagem sempre que uma nova cena carrega
-    // (necessário porque DontDestroyOnLoad mantém este GameObject mas as
-    // referências da cena anterior ficam inválidas)
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        aguaAtual = 0;
-        jogoAtivo = true;
-
-        barraAgua = null;
-        textoMensagem = null;
-
-        foreach (var img in FindObjectsOfType<Image>())
-        {
-            if (img.gameObject.name == "WaterFill")
-            {
-                barraAgua = img;
-                barraAgua.fillAmount = 0f;
-                break;
-            }
-        }
-
-        foreach (var txt in FindObjectsOfType<Text>())
-        {
-            if (txt.gameObject.name == "Texto Mensagem" || txt.gameObject.name == "TextoMensagem")
-            {
-                textoMensagem = txt;
-                break;
-            }
-        }
-    }
-
     void Start()
     {
         if (barraAgua != null)
-            barraAgua.fillAmount = 0f;
+        {
+            barraAgua.maxValue = aguaMaxima;
+            barraAgua.value = 0;
+        }
     }
 
     public void ApanarGota(Gota.TipoGota tipo)
@@ -94,14 +56,15 @@ public class GameManager : MonoBehaviour
         }
 
         if (barraAgua != null)
-            barraAgua.fillAmount = (float)aguaAtual / aguaMaxima;
+            barraAgua.value = aguaAtual;
     }
 
     void Ganhar()
     {
         jogoAtivo = false;
         GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene("ScoreScene");
+        // Carrega a cena a seguir na build list (sempre a ScoreScene do nivel atual)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void MostrarMensagem(string msg)

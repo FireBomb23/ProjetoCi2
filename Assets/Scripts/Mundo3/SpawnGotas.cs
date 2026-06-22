@@ -25,7 +25,7 @@ public class SpawnGotas : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.instancia.jogoAtivo) return;
+        if (GameManager.instancia == null || !GameManager.instancia.jogoAtivo) return;
 
         timer += Time.deltaTime;
         if (timer >= intervalo)
