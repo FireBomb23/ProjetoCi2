@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class AprenderManagerM3 : MonoBehaviour
 {
     [Header("Navegacao")]
-    [SerializeField] private string cenaSeguinte = "LevelSelectScene";
+    [SerializeField] private string cenaSeguinte = "LevelSelectScene3";
 
     // ── Painel Esquerdo – Curiosidades ──
     [Header("Painel Esquerdo")]
