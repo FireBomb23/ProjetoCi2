@@ -18,16 +18,44 @@ public class GameManager : MonoBehaviour
     public Text textoMensagem;
 
     void Awake()
+{
+    if (instancia != null && instancia != this)
     {
-        if (instancia != null && instancia != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instancia = this;
-        DontDestroyOnLoad(gameObject);
+        Destroy(gameObject);
+        return;
     }
+    instancia = this;
+    DontDestroyOnLoad(gameObject);
+
+    // ← NOVO: subscreve ao evento de cena carregada
+    SceneManager.sceneLoaded += OnCenaCarregada;
+}
+
+// ← NOVO: chamado automaticamente quando qualquer cena carrega
+void OnCenaCarregada(Scene scene, LoadSceneMode mode)
+{
+    // Só reseta se for uma cena de jogo (não a ScoreScene)
+    if (scene.name.Contains("ScoreScene")) return;
+
+    jogoAtivo = true;
+    aguaAtual = 0;
+
+    // Re-encontra os objetos UI na nova cena
+    barraAgua = FindFirstObjectByType<Slider>();
+    textoMensagem = FindFirstObjectByType<Text>();
+
+    if (barraAgua != null)
+    {
+        barraAgua.maxValue = aguaMaxima;
+        barraAgua.value = 0;
+    }
+}
+
+// ← NOVO: evita memory leak
+void OnDestroy()
+{
+    SceneManager.sceneLoaded -= OnCenaCarregada;
+}
 
     void Start()
     {
@@ -59,13 +87,12 @@ public class GameManager : MonoBehaviour
             barraAgua.value = aguaAtual;
     }
 
-    void Ganhar()
-    {
-        jogoAtivo = false;
-        GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
-        // Carrega a cena a seguir na build list (sempre a ScoreScene do nivel atual)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+   void Ganhar()
+{
+    jogoAtivo = false;
+    GuardarPontuacaoAntesDeSair(SceneManager.GetActiveScene().name);
+    SceneManager.LoadScene("ScoreScene1"); // ← nome exato da tua cena
+}
 
     void MostrarMensagem(string msg)
     {
