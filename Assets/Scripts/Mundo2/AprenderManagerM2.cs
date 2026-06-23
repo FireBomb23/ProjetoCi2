@@ -140,7 +140,7 @@ public class AprenderManagerM2 : MonoBehaviour
     }
 
     public void JogarQuiz()    { IniciarQuiz(); }
-    public void IrParaNiveis() { SceneManager.LoadScene(cenaSeguinte); }
+    public void IrParaNiveis() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1); }
 
     // ── QUIZ ──
     private void IniciarQuiz()
