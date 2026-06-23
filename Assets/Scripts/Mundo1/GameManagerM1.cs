@@ -1,14 +1,22 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class GameManagerM1
 {
-    // Variáveis privadas (o underline no início é uma boa prática para campos privados)
     private static int _rightAnswers = 0;
     private static int _wrongAnswers = 0;
+    private static int _targetAnswers = 0; 
+    private static string _lastPlayedScene = "Nivel 1"; // Guarda o nome do último nível jogado
 
-    // Propriedades Públicas (substituem os métodos Get com uma sintaxe mais limpa)
     public static int RightAnswers => _rightAnswers;
     public static int WrongAnswers => _wrongAnswers;
+    public static string LastPlayedScene => _lastPlayedScene; // Permite ao ecrã final ler o nome da cena
+
+    public static void SetLevelTarget(int totalPieces)
+    {
+        _targetAnswers = totalPieces;
+        _rightAnswers = 0; 
+    }
 
     public static void IncrementWrongAnswer()
     {
@@ -19,11 +27,12 @@ public static class GameManagerM1
     {
         _rightAnswers++;
 
-        if (_rightAnswers == 4)
+        if (_rightAnswers == _targetAnswers)
         {
-            // Resetamos os valores ANTES de mudar de cena para o próximo jogo começar limpo
-            Reset(); 
-            SceneManager.LoadScene("FinalScene");
+            // ANTES de mudar de cena, guarda o nome do nível que acabou de ser concluído
+            _lastPlayedScene = SceneManager.GetActiveScene().name;
+
+            SceneManager.LoadScene("ScoreScene11");
         }
     }
 

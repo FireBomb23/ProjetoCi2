@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class PuzzlePieceM1 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Image targetImage;
 
@@ -14,7 +14,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
-        _startPosition = _rectTransform.position;
+        _startPosition = _rectTransform.anchoredPosition;
         _myCanvas = GetComponentInParent<Canvas>();
         _canvasGroup = GetComponent<CanvasGroup>();
     }
@@ -32,10 +32,14 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.blocksRaycasts = true;
+        Invoke(nameof(ResetImage), 0.1f);
     }
 
     public void ResetImage()
     {
-        _rectTransform.position = _startPosition;
+        if (this != null && gameObject != null)
+        {
+            _rectTransform.anchoredPosition = _startPosition;
+        }
     }
 }
