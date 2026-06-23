@@ -13,10 +13,6 @@ public class PuzzlePieceM1 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     void Start()
     {
-        // NOVIDADE: Sempre que a cena inicia, garante que os pontos começam a ZERO!
-        // Como este Start corre para todas as peças, o Reset só precisa de correr uma vez.
-        GameManagerM1.Reset();
-
         _rectTransform = GetComponent<RectTransform>();
         _startPosition = _rectTransform.anchoredPosition;
         _myCanvas = GetComponentInParent<Canvas>();
