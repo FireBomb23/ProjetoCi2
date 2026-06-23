@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 184786093}
   - component: {fileID: 184786092}
   - component: {fileID: 184786094}
+  - component: {fileID: 184786095}
   m_Layer: 0
   m_Name: "p\xE73"
   m_TagString: Untagged
@@ -297,7 +298,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6601f722a1831c44b8cbc08d3e542548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzlePiece
-  targetImage: {fileID: 184786092}
+  targetImage: {fileID: 47063691}
+--- !u!225 &184786095
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184786090}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &186888699
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +504,7 @@ GameObject:
   - component: {fileID: 409606033}
   - component: {fileID: 409606032}
   - component: {fileID: 409606034}
+  - component: {fileID: 409606035}
   m_Layer: 0
   m_Name: "p\xE71"
   m_TagString: Untagged
@@ -567,7 +581,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6601f722a1831c44b8cbc08d3e542548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzlePiece
-  targetImage: {fileID: 409606032}
+  targetImage: {fileID: 1472288330}
+--- !u!225 &409606035
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409606030}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +917,7 @@ GameObject:
   - component: {fileID: 805239108}
   - component: {fileID: 805239107}
   - component: {fileID: 805239109}
+  - component: {fileID: 805239110}
   m_Layer: 0
   m_Name: "p\xE74"
   m_TagString: Untagged
@@ -967,7 +994,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6601f722a1831c44b8cbc08d3e542548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzlePiece
-  targetImage: {fileID: 805239107}
+  targetImage: {fileID: 758343669}
+--- !u!225 &805239110
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805239105}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &905782663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1282,7 @@ GameObject:
   - component: {fileID: 1235292077}
   - component: {fileID: 1235292076}
   - component: {fileID: 1235292078}
+  - component: {fileID: 1235292079}
   m_Layer: 0
   m_Name: "p\xE72"
   m_TagString: Untagged
@@ -1319,7 +1359,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6601f722a1831c44b8cbc08d3e542548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzlePiece
-  targetImage: {fileID: 1235292076}
+  targetImage: {fileID: 1601338667}
+--- !u!225 &1235292079
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235292074}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1472288328
 GameObject:
   m_ObjectHideFlags: 0
